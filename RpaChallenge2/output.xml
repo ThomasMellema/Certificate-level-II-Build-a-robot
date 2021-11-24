@@ -1,0 +1,3768 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.7.5 on win32)" generated="20211124 13:33:54.979" rpa="true" schemaversion="2">
+<suite id="s1" name="Tasks" source="c:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\tasks.robot">
+<test id="s1-t1" name="Order robots from RobotSpareBin Industries Inc">
+<kw name="Open the robot order website">
+<kw name="Get Secret" library="RPA.Robocorp.Vault">
+<var>${URL}</var>
+<arg>Vault</arg>
+<doc>Read a secret from the configured source, e.g. Robocorp Vault,
+and return it as a ``Secret`` object.</doc>
+<msg timestamp="20211124 13:33:58.732" level="INFO">Protecting keyword: RPA.Robocorp.Vault.Get Secret</msg>
+<msg timestamp="20211124 13:33:58.732" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20211124 13:33:58.732" endtime="20211124 13:33:58.732"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${URL}</var>
+<arg>${URL}[robot_url]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:33:58.748" level="INFO">${URL} = https://robotsparebinindustries.com/#/robot-order</msg>
+<status status="PASS" starttime="20211124 13:33:58.748" endtime="20211124 13:33:58.748"/>
+</kw>
+<kw name="New Browser" library="RPA.Browser.Playwright">
+<arg>chromium</arg>
+<arg>headless=false</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<msg timestamp="20211124 13:33:58.756" level="INFO">{"browser": "chromium", "headless": false, "handleSIGINT": true, "handleSIGTERM": true, "handleSIGHUP": true, "timeout": 30000.0, "devtools": false, "slowMo": 0.0, "tracesDir": "C:\\Users\\ThomasMellema\\OneDrive - Bureau Sprongkracht Munker\\Documenten\\Python\\RpaChallenge2\\browser\\traces\\3100a4e9-1100-4214-a7f8-9fa1da109d54"}</msg>
+<msg timestamp="20211124 13:33:59.590" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"handleSIGINT":true,"handleSIGTERM":true,"handleSIGHUP":true,"timeout":30000,"devtools":false,"slowMo":0,"tracesDir":"C:\\Users\\ThomasMellema\\OneDrive - Bureau Sprongkracht Munker\\Documenten\\Python\\RpaChallenge2\\browser\\traces\\3100a4e9-1100-4214-a7f8-9fa1da109d54"}</msg>
+<status status="PASS" starttime="20211124 13:33:58.748" endtime="20211124 13:33:59.590"/>
+</kw>
+<kw name="New Context" library="RPA.Browser.Playwright">
+<arg>viewport={'width': 1920, 'height': 1080}</arg>
+<arg>acceptDownloads=true</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new BrowserContext with specified options.</doc>
+<msg timestamp="20211124 13:33:59.606" level="INFO">{"acceptDownloads": true, "ignoreHTTPSErrors": false, "bypassCSP": false, "viewport": {"width": 1920, "height": 1080}, "deviceScaleFactor": 1.0, "isMobile": false, "hasTouch": false, "javaScriptEnabled": true, "offline": false, "hideRfBrowser": false}</msg>
+<msg timestamp="20211124 13:33:59.622" level="INFO">Successfully created context. </msg>
+<msg timestamp="20211124 13:33:59.622" level="INFO">{'acceptDownloads': True, 'ignoreHTTPSErrors': False, 'bypassCSP': False, 'viewport': {'width': 1920, 'height': 1080}, 'deviceScaleFactor': 1, 'isMobile': False, 'hasTouch': False, 'javaScriptEnabled': True, 'offline': False, 'hideRfBrowser': False}</msg>
+<status status="PASS" starttime="20211124 13:33:59.590" endtime="20211124 13:33:59.622"/>
+</kw>
+<kw name="New Page" library="RPA.Browser.Playwright">
+<arg>${URL}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page. A Page is the Playwright equivalent to a tab.
+See `Browser, Context and Page` for more information about Page concept.
+Returns a stable identifier for the created page.</doc>
+<msg timestamp="20211124 13:34:00.956" level="INFO">Successfully initialized new page object and opened url: https://robotsparebinindustries.com/#/robot-order</msg>
+<status status="PASS" starttime="20211124 13:33:59.622" endtime="20211124 13:34:00.957"/>
+</kw>
+<status status="PASS" starttime="20211124 13:33:58.732" endtime="20211124 13:34:00.959"/>
+</kw>
+<kw name="Download Csv File">
+<kw name="Get Value From User" library="Dialogs">
+<var>${url_Excel}</var>
+<arg>What is the URL of the orders CSV file?</arg>
+<doc>Pauses test execution and asks user to input a value.</doc>
+<msg timestamp="20211124 13:34:40.259" level="INFO">${url_Excel} = https://robotsparebinindustries.com/orders.csv</msg>
+<status status="PASS" starttime="20211124 13:34:00.967" endtime="20211124 13:34:40.259"/>
+</kw>
+<kw name="Download" library="RPA.HTTP">
+<arg>${url_Excel}</arg>
+<arg>overwrite=True</arg>
+<doc>An alias for the ``HTTP Get`` keyword.</doc>
+<msg timestamp="20211124 13:34:40.265" level="INFO">Creating a new HTTP session</msg>
+<msg timestamp="20211124 13:34:40.265" level="INFO">Creating Session using : alias=rpasession_alias.httpsrobotsparebinindustries.com, url=https://robotsparebinindustries.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<msg timestamp="20211124 13:34:40.389" level="INFO">GET Request : url=https://robotsparebinindustries.com/orders.csv 
+ path_url=/orders.csv 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20211124 13:34:40.390" level="INFO">GET Response : url=https://robotsparebinindustries.com/orders.csv 
+ status=200, reason=OK 
+ headers={'Connection': 'keep-alive', 'Content-Length': '199', 'Server': 'GitHub.com', 'Content-Type': 'text/csv; charset=utf-8', 'Last-Modified': 'Fri, 13 Aug 2021 11:27:04 GMT', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31556952', 'ETag': 'W/"61165708-19c"', 'expires': 'Wed, 24 Nov 2021 12:44:33 GMT', 'Cache-Control': 'max-age=600', 'Content-Encoding': 'gzip', 'x-proxy-cache': 'MISS', 'X-GitHub-Request-Id': 'BBF6:1C23:A6580:BBCAE:619E3159', 'Accept-Ranges': 'bytes', 'Date': 'Wed, 24 Nov 2021 12:34:41 GMT', 'Via': '1.1 varnish', 'Age': '8', 'X-Served-By': 'cache-ams21072-AMS', 'X-Cache': 'HIT', 'X-Cache-Hits': '1', 'X-Timer': 'S1637757281.215798,VS0,VE0', 'Vary': 'Accept-Encoding', 'X-Fastly-Request-ID': 'ac1ffea963a4d3435b8285c2040fe95382cb9f8a'} 
+ body=Order number,Head,Body,Legs,Address
+1,1,2,3,Address 123
+2,4,1,5,Address 456
+3,6,2,3,Address 789
+4,2,3,2,Address 1
+5,3,5,1,Address 2
+6,1,6,6,Address 3
+7,5,1,5,Address 4
+8,2,3,3,Address 5
+9,3,2,2,Address 6
+10,4,4,2,Address 7
+11,6,6,1,Address 8
+12,1,3,3,Address 9
+13,1,5,4,Address A
+14,3,1,5,Address B
+15,3,2,6,Address C
+16,6,3,6,Address D
+17,5,4,1,Address E
+18,2,5,1,Address F
+19,4,6,2,Address G
+20,1,1,5,Address H 
+ </msg>
+<status status="PASS" starttime="20211124 13:34:40.261" endtime="20211124 13:34:40.392"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:00.963" endtime="20211124 13:34:40.393"/>
+</kw>
+<kw name="Get orders">
+<var>${orders}</var>
+<kw name="Read table from CSV" library="RPA.Tables">
+<var>${orders}</var>
+<arg>orders.csv</arg>
+<arg>headers=True</arg>
+<doc>Read a CSV file as a table.</doc>
+<msg timestamp="20211124 13:34:40.408" level="INFO">${orders} = Table(columns=['Order number', 'Head', 'Body', 'Legs', 'Address'], rows=20)</msg>
+<status status="PASS" starttime="20211124 13:34:40.397" endtime="20211124 13:34:40.409"/>
+</kw>
+<msg timestamp="20211124 13:34:40.410" level="INFO">${orders} = Table(columns=['Order number', 'Head', 'Body', 'Legs', 'Address'], rows=20)</msg>
+<status status="PASS" starttime="20211124 13:34:40.395" endtime="20211124 13:34:40.410"/>
+</kw>
+<for flavor="IN">
+<var>${row}</var>
+<value>@{orders}</value>
+<iter>
+<var name="${row}">{'Order number': '1', 'Head': '1', 'Body': '2', 'Legs': '3', 'Address': 'Address 123'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:40.417" endtime="20211124 13:34:40.482"/>
+<
+</kw>
+<status status="PASS" starttime="20211124 13:34:32.491" endtime="20211124 13:34:32.555"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:32.558" endtime="20211124 13:34:32.577"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:32.579" endtime="20211124 13:34:32.616"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:32.619" level="INFO">Types the text '3' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:32.617" endtime="20211124 13:34:32.657"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:32.660" level="INFO">Types the text 'Address 123' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:32.658" endtime="20211124 13:34:32.705"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:32.556" endtime="20211124 13:34:32.705"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:32.714" endtime="20211124 13:34:32.778"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:32.705" endtime="20211124 13:34:32.780"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:32.789" endtime="20211124 13:34:32.836"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:43.162" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-1.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:34:43.173" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:34:32.838" endtime="20211124 13:34:43.173"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:34:32.786" endtime="20211124 13:34:43.178"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:44.193" endtime="20211124 13:34:44.231"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:44.262" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:34:44.223Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-POKB7OSSOK&lt;/p&gt;&lt;p&gt;Address 123&lt;/p&gt;&lt;div id="par...</msg>
+<status status="PASS" starttime="20211124 13:34:44.233" endtime="20211124 13:34:44.263"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:44.191" endtime="20211124 13:34:44.264"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:32.784" endtime="20211124 13:34:44.266"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:32.781" endtime="20211124 13:34:44.269"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:34:44.276" level="INFO">${Ordernummer} = 1</msg>
+<status status="PASS" starttime="20211124 13:34:44.274" endtime="20211124 13:34:44.276"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:44.299" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:34:44.223Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-POKB7OSSOK&lt;/p&gt;&lt;p&gt;Address 123&lt;/p&gt;&lt;div id="par...</msg>
+<status status="PASS" starttime="20211124 13:34:44.277" endtime="20211124 13:34:44.300"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:34:44.304" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\1.pdf</msg>
+<status status="PASS" starttime="20211124 13:34:44.301" endtime="20211124 13:34:44.314"/>
+</kw>
+<msg timestamp="20211124 13:34:44.317" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:34:44.272" endtime="20211124 13:34:44.317"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:34:44.436" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/1.png"&gt;&lt;img src="browser/screenshot/1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:34:44.436" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\1.png</msg>
+<status status="PASS" starttime="20211124 13:34:44.322" endtime="20211124 13:34:44.436"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:34:44.438" endtime="20211124 13:34:44.440"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:34:44.441" endtime="20211124 13:34:44.564"/>
+</kw>
+<msg timestamp="20211124 13:34:44.566" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:34:44.319" endtime="20211124 13:34:44.566"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:44.569" endtime="20211124 13:34:44.721"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:44.567" endtime="20211124 13:34:44.723"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:32.490" endtime="20211124 13:34:44.724"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '2', 'Head': '4', 'Body': '1', 'Legs': '5', 'Address': 'Address 456'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:44.728" endtime="20211124 13:34:44.832"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:44.726" endtime="20211124 13:34:44.834"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:44.838" endtime="20211124 13:34:44.856"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:44.858" endtime="20211124 13:34:44.910"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:44.914" level="INFO">Types the text '5' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:44.911" endtime="20211124 13:34:44.942"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:44.945" level="INFO">Types the text 'Address 456' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:44.943" endtime="20211124 13:34:44.990"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:44.835" endtime="20211124 13:34:44.991"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:44.994" endtime="20211124 13:34:45.044"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:44.992" endtime="20211124 13:34:45.045"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.053" endtime="20211124 13:34:45.114"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:45.136" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:34:45.109Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-F6E0U3WZ5K&lt;/p&gt;&lt;p&gt;Address 456&lt;/p&gt;&lt;div id="par...</msg>
+<status status="PASS" starttime="20211124 13:34:45.115" endtime="20211124 13:34:45.136"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.051" endtime="20211124 13:34:45.138"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.049" endtime="20211124 13:34:45.139"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.047" endtime="20211124 13:34:45.140"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:34:45.144" level="INFO">${Ordernummer} = 2</msg>
+<status status="PASS" starttime="20211124 13:34:45.143" endtime="20211124 13:34:45.144"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:45.161" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:34:45.109Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-F6E0U3WZ5K&lt;/p&gt;&lt;p&gt;Address 456&lt;/p&gt;&lt;div id="par...</msg>
+<status status="PASS" starttime="20211124 13:34:45.146" endtime="20211124 13:34:45.161"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:34:45.165" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\2.pdf</msg>
+<status status="PASS" starttime="20211124 13:34:45.162" endtime="20211124 13:34:45.171"/>
+</kw>
+<msg timestamp="20211124 13:34:45.173" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:34:45.141" endtime="20211124 13:34:45.173"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:34:45.276" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/2.png"&gt;&lt;img src="browser/screenshot/2.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:34:45.277" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\2.png</msg>
+<status status="PASS" starttime="20211124 13:34:45.176" endtime="20211124 13:34:45.277"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:34:45.279" endtime="20211124 13:34:45.282"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:34:45.284" endtime="20211124 13:34:45.335"/>
+</kw>
+<msg timestamp="20211124 13:34:45.337" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:34:45.174" endtime="20211124 13:34:45.337"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.339" endtime="20211124 13:34:45.411"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.338" endtime="20211124 13:34:45.414"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:44.725" endtime="20211124 13:34:45.415"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '3', 'Head': '6', 'Body': '2', 'Legs': '3', 'Address': 'Address 789'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.423" endtime="20211124 13:34:45.494"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.420" endtime="20211124 13:34:45.495"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.499" endtime="20211124 13:34:45.518"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.520" endtime="20211124 13:34:45.556"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:45.559" level="INFO">Types the text '3' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:45.557" endtime="20211124 13:34:45.577"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:45.580" level="INFO">Types the text 'Address 789' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:45.578" endtime="20211124 13:34:45.624"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.496" endtime="20211124 13:34:45.625"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.628" endtime="20211124 13:34:45.678"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.626" endtime="20211124 13:34:45.679"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:45.686" endtime="20211124 13:34:45.726"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:55.969" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-3.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:34:55.972" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:34:45.727" endtime="20211124 13:34:55.972"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:34:45.684" endtime="20211124 13:34:55.977"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:56.981" endtime="20211124 13:34:57.018"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:57.039" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:34:57.013Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-1ZYHH2HFNL&lt;/p&gt;&lt;p&gt;Address 789&lt;/p&gt;&lt;div id="par...</msg>
+<status status="PASS" starttime="20211124 13:34:57.020" endtime="20211124 13:34:57.039"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:56.979" endtime="20211124 13:34:57.041"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.682" endtime="20211124 13:34:57.042"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.680" endtime="20211124 13:34:57.045"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:34:57.050" level="INFO">${Ordernummer} = 3</msg>
+<status status="PASS" starttime="20211124 13:34:57.048" endtime="20211124 13:34:57.050"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:57.067" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:34:57.013Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-1ZYHH2HFNL&lt;/p&gt;&lt;p&gt;Address 789&lt;/p&gt;&lt;div id="par...</msg>
+<status status="PASS" starttime="20211124 13:34:57.051" endtime="20211124 13:34:57.067"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:34:57.071" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\3.pdf</msg>
+<status status="PASS" starttime="20211124 13:34:57.068" endtime="20211124 13:34:57.080"/>
+</kw>
+<msg timestamp="20211124 13:34:57.081" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:34:57.046" endtime="20211124 13:34:57.081"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:34:57.189" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/3.png"&gt;&lt;img src="browser/screenshot/3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:34:57.189" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\3.png</msg>
+<status status="PASS" starttime="20211124 13:34:57.084" endtime="20211124 13:34:57.189"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:34:57.191" endtime="20211124 13:34:57.194"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:34:57.196" endtime="20211124 13:34:57.251"/>
+</kw>
+<msg timestamp="20211124 13:34:57.252" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:34:57.082" endtime="20211124 13:34:57.252"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:57.255" endtime="20211124 13:34:57.372"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.253" endtime="20211124 13:34:57.375"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:45.418" endtime="20211124 13:34:57.376"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '4', 'Head': '2', 'Body': '3', 'Legs': '2', 'Address': 'Address 1'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:57.383" endtime="20211124 13:34:57.451"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.380" endtime="20211124 13:34:57.453"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:57.456" endtime="20211124 13:34:57.468"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:57.469" endtime="20211124 13:34:57.532"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:57.537" level="INFO">Types the text '2' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:57.534" endtime="20211124 13:34:57.565"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:34:57.568" level="INFO">Types the text 'Address 1' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:34:57.567" endtime="20211124 13:34:57.607"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.454" endtime="20211124 13:34:57.611"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:57.614" endtime="20211124 13:34:57.651"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.612" endtime="20211124 13:34:57.652"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:34:57.660" endtime="20211124 13:34:57.701"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:07.918" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-5.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:07.922" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:34:57.702" endtime="20211124 13:35:07.923"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:34:57.657" endtime="20211124 13:35:07.927"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:08.952" endtime="20211124 13:35:09.006"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:19.233" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-7.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:19.238" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:35:09.007" endtime="20211124 13:35:19.239"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:35:08.944" endtime="20211124 13:35:19.243"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.266" endtime="20211124 13:35:20.304"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:20.325" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:20.300Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-P5YLM5GB9Q&lt;/p&gt;&lt;p&gt;Address 1&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:35:20.306" endtime="20211124 13:35:20.325"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.256" endtime="20211124 13:35:20.326"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.655" endtime="20211124 13:35:20.327"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.653" endtime="20211124 13:35:20.328"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:35:20.334" level="INFO">${Ordernummer} = 4</msg>
+<status status="PASS" starttime="20211124 13:35:20.332" endtime="20211124 13:35:20.334"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:20.352" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:20.300Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-P5YLM5GB9Q&lt;/p&gt;&lt;p&gt;Address 1&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:35:20.335" endtime="20211124 13:35:20.352"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:35:20.356" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\4.pdf</msg>
+<status status="PASS" starttime="20211124 13:35:20.354" endtime="20211124 13:35:20.363"/>
+</kw>
+<msg timestamp="20211124 13:35:20.366" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:35:20.330" endtime="20211124 13:35:20.366"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:35:20.477" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/4.png"&gt;&lt;img src="browser/screenshot/4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:20.478" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\4.png</msg>
+<status status="PASS" starttime="20211124 13:35:20.369" endtime="20211124 13:35:20.478"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:35:20.479" endtime="20211124 13:35:20.481"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:35:20.482" endtime="20211124 13:35:20.535"/>
+</kw>
+<msg timestamp="20211124 13:35:20.537" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:35:20.367" endtime="20211124 13:35:20.537"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.539" endtime="20211124 13:35:20.668"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.538" endtime="20211124 13:35:20.669"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:57.379" endtime="20211124 13:35:20.670"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '5', 'Head': '3', 'Body': '5', 'Legs': '1', 'Address': 'Address 2'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.675" endtime="20211124 13:35:20.747"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.672" endtime="20211124 13:35:20.749"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.753" endtime="20211124 13:35:20.771"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.773" endtime="20211124 13:35:20.806"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:20.809" level="INFO">Types the text '1' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:20.807" endtime="20211124 13:35:20.833"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:20.835" level="INFO">Types the text 'Address 2' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:20.834" endtime="20211124 13:35:20.868"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.751" endtime="20211124 13:35:20.869"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.872" endtime="20211124 13:35:20.926"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.870" endtime="20211124 13:35:20.928"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:20.936" endtime="20211124 13:35:20.989"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:31.206" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-9.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:31.206" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:35:20.991" endtime="20211124 13:35:31.206"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:35:20.934" endtime="20211124 13:35:31.223"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.233" endtime="20211124 13:35:32.281"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:32.307" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:32.264Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-JQ1OHT3R2&lt;/p&gt;&lt;p&gt;Address 2&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:35:32.282" endtime="20211124 13:35:32.307"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.230" endtime="20211124 13:35:32.308"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.933" endtime="20211124 13:35:32.309"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.929" endtime="20211124 13:35:32.310"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:35:32.315" level="INFO">${Ordernummer} = 5</msg>
+<status status="PASS" starttime="20211124 13:35:32.314" endtime="20211124 13:35:32.316"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:32.332" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:32.264Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-JQ1OHT3R2&lt;/p&gt;&lt;p&gt;Address 2&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:35:32.317" endtime="20211124 13:35:32.332"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:35:32.336" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\5.pdf</msg>
+<status status="PASS" starttime="20211124 13:35:32.333" endtime="20211124 13:35:32.345"/>
+</kw>
+<msg timestamp="20211124 13:35:32.347" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:35:32.311" endtime="20211124 13:35:32.347"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:35:32.451" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/5.png"&gt;&lt;img src="browser/screenshot/5.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:32.452" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\5.png</msg>
+<status status="PASS" starttime="20211124 13:35:32.351" endtime="20211124 13:35:32.452"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:35:32.454" endtime="20211124 13:35:32.460"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:35:32.463" endtime="20211124 13:35:32.528"/>
+</kw>
+<msg timestamp="20211124 13:35:32.529" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:35:32.348" endtime="20211124 13:35:32.530"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.533" endtime="20211124 13:35:32.675"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.531" endtime="20211124 13:35:32.677"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:20.671" endtime="20211124 13:35:32.678"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '6', 'Head': '1', 'Body': '6', 'Legs': '6', 'Address': 'Address 3'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.685" endtime="20211124 13:35:32.750"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.682" endtime="20211124 13:35:32.751"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.758" endtime="20211124 13:35:32.778"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.780" endtime="20211124 13:35:32.813"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:32.816" level="INFO">Types the text '6' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:32.814" endtime="20211124 13:35:32.840"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:32.843" level="INFO">Types the text 'Address 3' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:32.841" endtime="20211124 13:35:32.891"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.752" endtime="20211124 13:35:32.892"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.898" endtime="20211124 13:35:32.953"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.893" endtime="20211124 13:35:32.954"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:32.962" endtime="20211124 13:35:33.018"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:33.041" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:33.013Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-SCCLDO361C&lt;/p&gt;&lt;p&gt;Address 3&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:35:33.019" endtime="20211124 13:35:33.041"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.960" endtime="20211124 13:35:33.043"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.959" endtime="20211124 13:35:33.044"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.956" endtime="20211124 13:35:33.046"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:35:33.052" level="INFO">${Ordernummer} = 6</msg>
+<status status="PASS" starttime="20211124 13:35:33.049" endtime="20211124 13:35:33.052"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:33.066" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:33.013Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-SCCLDO361C&lt;/p&gt;&lt;p&gt;Address 3&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:35:33.053" endtime="20211124 13:35:33.066"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:35:33.070" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\6.pdf</msg>
+<status status="PASS" starttime="20211124 13:35:33.067" endtime="20211124 13:35:33.077"/>
+</kw>
+<msg timestamp="20211124 13:35:33.078" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:35:33.047" endtime="20211124 13:35:33.079"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:35:33.190" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/6.png"&gt;&lt;img src="browser/screenshot/6.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:33.191" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\6.png</msg>
+<status status="PASS" starttime="20211124 13:35:33.082" endtime="20211124 13:35:33.192"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:35:33.193" endtime="20211124 13:35:33.197"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:35:33.198" endtime="20211124 13:35:33.237"/>
+</kw>
+<msg timestamp="20211124 13:35:33.237" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:35:33.080" endtime="20211124 13:35:33.237"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.252" endtime="20211124 13:35:33.310"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.237" endtime="20211124 13:35:33.312"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:32.680" endtime="20211124 13:35:33.313"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '7', 'Head': '5', 'Body': '1', 'Legs': '5', 'Address': 'Address 4'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.318" endtime="20211124 13:35:33.378"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.315" endtime="20211124 13:35:33.380"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.385" endtime="20211124 13:35:33.402"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.404" endtime="20211124 13:35:33.446"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:33.451" level="INFO">Types the text '5' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:33.448" endtime="20211124 13:35:33.479"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:33.482" level="INFO">Types the text 'Address 4' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:33.480" endtime="20211124 13:35:33.543"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.381" endtime="20211124 13:35:33.544"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.548" endtime="20211124 13:35:33.615"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.546" endtime="20211124 13:35:33.616"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.626" endtime="20211124 13:35:33.701"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:33.738" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:33.695Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-N6GXTK2FTN&lt;/p&gt;&lt;p&gt;Address 4&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:35:33.704" endtime="20211124 13:35:33.738"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.621" endtime="20211124 13:35:33.740"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.619" endtime="20211124 13:35:33.742"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.617" endtime="20211124 13:35:33.743"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:35:33.750" level="INFO">${Ordernummer} = 7</msg>
+<status status="PASS" starttime="20211124 13:35:33.747" endtime="20211124 13:35:33.750"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:33.773" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:33.695Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-N6GXTK2FTN&lt;/p&gt;&lt;p&gt;Address 4&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:35:33.752" endtime="20211124 13:35:33.773"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:35:33.779" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\7.pdf</msg>
+<status status="PASS" starttime="20211124 13:35:33.775" endtime="20211124 13:35:33.790"/>
+</kw>
+<msg timestamp="20211124 13:35:33.793" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:35:33.744" endtime="20211124 13:35:33.793"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:35:33.901" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/7.png"&gt;&lt;img src="browser/screenshot/7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:33.901" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\7.png</msg>
+<status status="PASS" starttime="20211124 13:35:33.797" endtime="20211124 13:35:33.902"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:35:33.903" endtime="20211124 13:35:33.907"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:35:33.910" endtime="20211124 13:35:33.971"/>
+</kw>
+<msg timestamp="20211124 13:35:33.971" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:35:33.795" endtime="20211124 13:35:33.971"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:33.971" endtime="20211124 13:35:34.046"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.971" endtime="20211124 13:35:34.048"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:33.314" endtime="20211124 13:35:34.051"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '8', 'Head': '2', 'Body': '3', 'Legs': '3', 'Address': 'Address 5'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.061" endtime="20211124 13:35:34.134"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.057" endtime="20211124 13:35:34.136"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.141" endtime="20211124 13:35:34.153"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.156" endtime="20211124 13:35:34.194"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:34.197" level="INFO">Types the text '3' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:34.196" endtime="20211124 13:35:34.221"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:34.225" level="INFO">Types the text 'Address 5' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:34.224" endtime="20211124 13:35:34.262"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.138" endtime="20211124 13:35:34.264"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.267" endtime="20211124 13:35:34.324"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.265" endtime="20211124 13:35:34.326"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.336" endtime="20211124 13:35:34.381"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:34.402" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:34.376Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-K25W5BRKL&lt;/p&gt;&lt;p&gt;Address 5&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:35:34.382" endtime="20211124 13:35:34.402"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.333" endtime="20211124 13:35:34.404"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.331" endtime="20211124 13:35:34.406"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.328" endtime="20211124 13:35:34.408"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:35:34.413" level="INFO">${Ordernummer} = 8</msg>
+<status status="PASS" starttime="20211124 13:35:34.412" endtime="20211124 13:35:34.413"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:34.431" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:35:34.376Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-K25W5BRKL&lt;/p&gt;&lt;p&gt;Address 5&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:35:34.415" endtime="20211124 13:35:34.431"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:35:34.438" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\8.pdf</msg>
+<status status="PASS" starttime="20211124 13:35:34.432" endtime="20211124 13:35:34.446"/>
+</kw>
+<msg timestamp="20211124 13:35:34.448" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:35:34.409" endtime="20211124 13:35:34.448"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:35:34.566" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/8.png"&gt;&lt;img src="browser/screenshot/8.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:34.566" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\8.png</msg>
+<status status="PASS" starttime="20211124 13:35:34.452" endtime="20211124 13:35:34.566"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:35:34.568" endtime="20211124 13:35:34.573"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:35:34.575" endtime="20211124 13:35:34.648"/>
+</kw>
+<msg timestamp="20211124 13:35:34.650" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:35:34.449" endtime="20211124 13:35:34.650"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.653" endtime="20211124 13:35:34.721"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.651" endtime="20211124 13:35:34.723"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.053" endtime="20211124 13:35:34.724"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '9', 'Head': '3', 'Body': '2', 'Legs': '2', 'Address': 'Address 6'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.728" endtime="20211124 13:35:34.784"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.726" endtime="20211124 13:35:34.785"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.790" endtime="20211124 13:35:34.803"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.806" endtime="20211124 13:35:34.845"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:34.849" level="INFO">Types the text '2' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:34.847" endtime="20211124 13:35:34.873"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:34.876" level="INFO">Types the text 'Address 6' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:35:34.874" endtime="20211124 13:35:34.916"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.786" endtime="20211124 13:35:34.917"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.921" endtime="20211124 13:35:34.982"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.918" endtime="20211124 13:35:34.983"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:34.994" endtime="20211124 13:35:35.045"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:45.295" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-10.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:45.299" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:35:35.047" endtime="20211124 13:35:45.300"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:35:34.992" endtime="20211124 13:35:45.305"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:46.323" endtime="20211124 13:35:46.369"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:35:56.587" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-12.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:35:56.590" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:35:46.371" endtime="20211124 13:35:56.591"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:35:46.320" endtime="20211124 13:35:56.597"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:35:57.613" endtime="20211124 13:35:57.629"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:07.850" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-14.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-14.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:07.850" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:35:57.631" endtime="20211124 13:36:07.850"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:35:57.611" endtime="20211124 13:36:07.872"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:08.882" endtime="20211124 13:36:08.913"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:08.933" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:08.907Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-1WW0MAP0H&lt;/p&gt;&lt;p&gt;Address 6&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:36:08.914" endtime="20211124 13:36:08.933"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:08.882" endtime="20211124 13:36:08.935"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.989" endtime="20211124 13:36:08.936"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.985" endtime="20211124 13:36:08.937"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:36:08.942" level="INFO">${Ordernummer} = 9</msg>
+<status status="PASS" starttime="20211124 13:36:08.941" endtime="20211124 13:36:08.942"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:08.958" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:08.907Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-1WW0MAP0H&lt;/p&gt;&lt;p&gt;Address 6&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:36:08.944" endtime="20211124 13:36:08.958"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:36:08.962" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\9.pdf</msg>
+<status status="PASS" starttime="20211124 13:36:08.959" endtime="20211124 13:36:08.968"/>
+</kw>
+<msg timestamp="20211124 13:36:08.968" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:36:08.939" endtime="20211124 13:36:08.968"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:36:09.114" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/9.png"&gt;&lt;img src="browser/screenshot/9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:09.115" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\9.png</msg>
+<status status="PASS" starttime="20211124 13:36:08.968" endtime="20211124 13:36:09.115"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:36:09.116" endtime="20211124 13:36:09.119"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:36:09.121" endtime="20211124 13:36:09.167"/>
+</kw>
+<msg timestamp="20211124 13:36:09.167" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:36:08.968" endtime="20211124 13:36:09.167"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:09.167" endtime="20211124 13:36:09.297"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.167" endtime="20211124 13:36:09.299"/>
+</kw>
+<status status="PASS" starttime="20211124 13:35:34.725" endtime="20211124 13:36:09.301"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '10', 'Head': '4', 'Body': '4', 'Legs': '2', 'Address': 'Address 7'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:09.306" endtime="20211124 13:36:09.393"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.304" endtime="20211124 13:36:09.394"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:09.397" endtime="20211124 13:36:09.415"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:09.416" endtime="20211124 13:36:09.463"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:09.466" level="INFO">Types the text '2' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:09.465" endtime="20211124 13:36:09.487"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:09.490" level="INFO">Types the text 'Address 7' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:09.488" endtime="20211124 13:36:09.529"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.395" endtime="20211124 13:36:09.530"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:09.533" endtime="20211124 13:36:09.586"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.531" endtime="20211124 13:36:09.588"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:09.595" endtime="20211124 13:36:09.647"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:19.862" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-15.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:19.862" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:36:09.648" endtime="20211124 13:36:19.862"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:36:09.593" endtime="20211124 13:36:19.878"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:20.890" endtime="20211124 13:36:20.934"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:31.145" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-16.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-16.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:31.148" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:36:20.936" endtime="20211124 13:36:31.148"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:36:20.886" endtime="20211124 13:36:31.152"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:32.164" endtime="20211124 13:36:32.203"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:42.415" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-17.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-17.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:42.421" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:36:32.204" endtime="20211124 13:36:42.421"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:36:32.164" endtime="20211124 13:36:42.427"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:43.437" endtime="20211124 13:36:43.479"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:43.500" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:43.474Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-2FHLH7VI5O&lt;/p&gt;&lt;p&gt;Address 7&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:36:43.481" endtime="20211124 13:36:43.500"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:43.437" endtime="20211124 13:36:43.501"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.591" endtime="20211124 13:36:43.502"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.589" endtime="20211124 13:36:43.504"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:36:43.508" level="INFO">${Ordernummer} = 10</msg>
+<status status="PASS" starttime="20211124 13:36:43.507" endtime="20211124 13:36:43.508"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:43.526" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:43.474Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-2FHLH7VI5O&lt;/p&gt;&lt;p&gt;Address 7&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:36:43.509" endtime="20211124 13:36:43.526"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:36:43.530" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\10.pdf</msg>
+<status status="PASS" starttime="20211124 13:36:43.527" endtime="20211124 13:36:43.534"/>
+</kw>
+<msg timestamp="20211124 13:36:43.534" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:36:43.505" endtime="20211124 13:36:43.534"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:36:43.667" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/10.png"&gt;&lt;img src="browser/screenshot/10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:43.668" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\10.png</msg>
+<status status="PASS" starttime="20211124 13:36:43.534" endtime="20211124 13:36:43.668"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:36:43.670" endtime="20211124 13:36:43.672"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:36:43.673" endtime="20211124 13:36:43.717"/>
+</kw>
+<msg timestamp="20211124 13:36:43.717" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:36:43.534" endtime="20211124 13:36:43.717"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:43.722" endtime="20211124 13:36:43.797"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:43.722" endtime="20211124 13:36:43.798"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:09.302" endtime="20211124 13:36:43.799"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '11', 'Head': '6', 'Body': '6', 'Legs': '1', 'Address': 'Address 8'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:43.806" endtime="20211124 13:36:43.875"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:43.803" endtime="20211124 13:36:43.876"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:43.879" endtime="20211124 13:36:43.895"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:43.896" endtime="20211124 13:36:43.955"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:43.961" level="INFO">Types the text '1' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:43.958" endtime="20211124 13:36:43.993"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:43.996" level="INFO">Types the text 'Address 8' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:43.994" endtime="20211124 13:36:44.038"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:43.877" endtime="20211124 13:36:44.040"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.042" endtime="20211124 13:36:44.115"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.041" endtime="20211124 13:36:44.117"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.125" endtime="20211124 13:36:44.181"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:44.198" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:44.177Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-CXIC6MCXM2&lt;/p&gt;&lt;p&gt;Address 8&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:36:44.183" endtime="20211124 13:36:44.198"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.122" endtime="20211124 13:36:44.200"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.120" endtime="20211124 13:36:44.200"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.118" endtime="20211124 13:36:44.202"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:36:44.208" level="INFO">${Ordernummer} = 11</msg>
+<status status="PASS" starttime="20211124 13:36:44.206" endtime="20211124 13:36:44.208"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:44.224" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:44.177Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-CXIC6MCXM2&lt;/p&gt;&lt;p&gt;Address 8&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:36:44.209" endtime="20211124 13:36:44.224"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:36:44.228" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\11.pdf</msg>
+<status status="PASS" starttime="20211124 13:36:44.225" endtime="20211124 13:36:44.235"/>
+</kw>
+<msg timestamp="20211124 13:36:44.237" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:36:44.203" endtime="20211124 13:36:44.237"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:36:44.340" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/11.png"&gt;&lt;img src="browser/screenshot/11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:44.341" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\11.png</msg>
+<status status="PASS" starttime="20211124 13:36:44.240" endtime="20211124 13:36:44.341"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:36:44.342" endtime="20211124 13:36:44.344"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:36:44.346" endtime="20211124 13:36:44.383"/>
+</kw>
+<msg timestamp="20211124 13:36:44.383" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:36:44.238" endtime="20211124 13:36:44.383"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.399" endtime="20211124 13:36:44.460"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.399" endtime="20211124 13:36:44.462"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:43.802" endtime="20211124 13:36:44.463"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '12', 'Head': '1', 'Body': '3', 'Legs': '3', 'Address': 'Address 9'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.470" endtime="20211124 13:36:44.530"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.466" endtime="20211124 13:36:44.531"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.534" endtime="20211124 13:36:44.546"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.548" endtime="20211124 13:36:44.606"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:44.609" level="INFO">Types the text '3' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:44.607" endtime="20211124 13:36:44.626"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:44.629" level="INFO">Types the text 'Address 9' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:44.627" endtime="20211124 13:36:44.662"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.532" endtime="20211124 13:36:44.663"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.666" endtime="20211124 13:36:44.716"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.664" endtime="20211124 13:36:44.717"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:44.724" endtime="20211124 13:36:44.777"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:55.008" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-18.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-18.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:55.008" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:36:44.779" endtime="20211124 13:36:55.008"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:36:44.722" endtime="20211124 13:36:55.024"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.048" endtime="20211124 13:36:56.087"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:56.102" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:56.069Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-VPK4B1BDB&lt;/p&gt;&lt;p&gt;Address 9&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:36:56.089" endtime="20211124 13:36:56.102"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.042" endtime="20211124 13:36:56.104"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.720" endtime="20211124 13:36:56.104"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.718" endtime="20211124 13:36:56.105"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:36:56.110" level="INFO">${Ordernummer} = 12</msg>
+<status status="PASS" starttime="20211124 13:36:56.109" endtime="20211124 13:36:56.110"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:56.126" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:36:56.069Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-VPK4B1BDB&lt;/p&gt;&lt;p&gt;Address 9&lt;/p&gt;&lt;div id="parts"...</msg>
+<status status="PASS" starttime="20211124 13:36:56.112" endtime="20211124 13:36:56.126"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:36:56.130" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\12.pdf</msg>
+<status status="PASS" starttime="20211124 13:36:56.127" endtime="20211124 13:36:56.130"/>
+</kw>
+<msg timestamp="20211124 13:36:56.130" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:36:56.107" endtime="20211124 13:36:56.130"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:36:56.249" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/12.png"&gt;&lt;img src="browser/screenshot/12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:36:56.249" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\12.png</msg>
+<status status="PASS" starttime="20211124 13:36:56.130" endtime="20211124 13:36:56.250"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:36:56.251" endtime="20211124 13:36:56.253"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:36:56.254" endtime="20211124 13:36:56.296"/>
+</kw>
+<msg timestamp="20211124 13:36:56.296" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:36:56.130" endtime="20211124 13:36:56.296"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.312" endtime="20211124 13:36:56.396"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.312" endtime="20211124 13:36:56.398"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:44.465" endtime="20211124 13:36:56.399"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '13', 'Head': '1', 'Body': '5', 'Legs': '4', 'Address': 'Address A'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.403" endtime="20211124 13:36:56.467"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.401" endtime="20211124 13:36:56.470"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.475" endtime="20211124 13:36:56.493"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.494" endtime="20211124 13:36:56.540"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:56.543" level="INFO">Types the text '4' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:56.541" endtime="20211124 13:36:56.563"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:36:56.567" level="INFO">Types the text 'Address A' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:36:56.565" endtime="20211124 13:36:56.597"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.471" endtime="20211124 13:36:56.599"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.602" endtime="20211124 13:36:56.662"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.600" endtime="20211124 13:36:56.663"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:36:56.670" endtime="20211124 13:36:56.725"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:06.932" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-19.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:06.932" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:36:56.726" endtime="20211124 13:37:06.932"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:36:56.668" endtime="20211124 13:37:06.945"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:07.950" endtime="20211124 13:37:08.000"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:08.015" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:07.982Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-2SLTR6SBIC&lt;/p&gt;&lt;p&gt;Address A&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:08.002" endtime="20211124 13:37:08.016"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:07.950" endtime="20211124 13:37:08.017"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.666" endtime="20211124 13:37:08.018"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.663" endtime="20211124 13:37:08.019"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:08.023" level="INFO">${Ordernummer} = 13</msg>
+<status status="PASS" starttime="20211124 13:37:08.022" endtime="20211124 13:37:08.024"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:08.039" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:07.982Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-2SLTR6SBIC&lt;/p&gt;&lt;p&gt;Address A&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:08.025" endtime="20211124 13:37:08.039"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:08.043" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\13.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:08.040" endtime="20211124 13:37:08.050"/>
+</kw>
+<msg timestamp="20211124 13:37:08.052" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:08.020" endtime="20211124 13:37:08.052"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:08.144" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/13.png"&gt;&lt;img src="browser/screenshot/13.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:08.144" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\13.png</msg>
+<status status="PASS" starttime="20211124 13:37:08.055" endtime="20211124 13:37:08.145"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:08.146" endtime="20211124 13:37:08.148"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:08.149" endtime="20211124 13:37:08.200"/>
+</kw>
+<msg timestamp="20211124 13:37:08.200" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:08.053" endtime="20211124 13:37:08.200"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:08.200" endtime="20211124 13:37:08.262"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.200" endtime="20211124 13:37:08.263"/>
+</kw>
+<status status="PASS" starttime="20211124 13:36:56.400" endtime="20211124 13:37:08.264"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '14', 'Head': '3', 'Body': '1', 'Legs': '5', 'Address': 'Address B'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:08.270" endtime="20211124 13:37:08.315"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.267" endtime="20211124 13:37:08.317"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:08.323" endtime="20211124 13:37:08.338"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:08.340" endtime="20211124 13:37:08.380"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:08.383" level="INFO">Types the text '5' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:08.381" endtime="20211124 13:37:08.398"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:08.402" level="INFO">Types the text 'Address B' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:08.400" endtime="20211124 13:37:08.431"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.318" endtime="20211124 13:37:08.432"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:08.436" endtime="20211124 13:37:08.484"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.433" endtime="20211124 13:37:08.486"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:08.493" endtime="20211124 13:37:08.550"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:18.776" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-20.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-20.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:18.780" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:37:08.552" endtime="20211124 13:37:18.780"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:37:08.491" endtime="20211124 13:37:18.786"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:19.793" endtime="20211124 13:37:19.858"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:30.099" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-21.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-21.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:30.099" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:37:19.860" endtime="20211124 13:37:30.099"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:37:19.791" endtime="20211124 13:37:30.106"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.129" endtime="20211124 13:37:31.186"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:31.213" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:31.177Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-4Q6W26W0II&lt;/p&gt;&lt;p&gt;Address B&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:31.188" endtime="20211124 13:37:31.213"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.129" endtime="20211124 13:37:31.214"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.489" endtime="20211124 13:37:31.215"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.487" endtime="20211124 13:37:31.216"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:31.221" level="INFO">${Ordernummer} = 14</msg>
+<status status="PASS" starttime="20211124 13:37:31.219" endtime="20211124 13:37:31.221"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:31.225" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:31.177Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-4Q6W26W0II&lt;/p&gt;&lt;p&gt;Address B&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:31.222" endtime="20211124 13:37:31.225"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:31.243" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\14.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:31.225" endtime="20211124 13:37:31.247"/>
+</kw>
+<msg timestamp="20211124 13:37:31.247" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:31.217" endtime="20211124 13:37:31.247"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:31.352" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/14.png"&gt;&lt;img src="browser/screenshot/14.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:31.353" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\14.png</msg>
+<status status="PASS" starttime="20211124 13:37:31.247" endtime="20211124 13:37:31.353"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:31.355" endtime="20211124 13:37:31.357"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:31.359" endtime="20211124 13:37:31.407"/>
+</kw>
+<msg timestamp="20211124 13:37:31.414" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:31.247" endtime="20211124 13:37:31.414"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.414" endtime="20211124 13:37:31.485"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.414" endtime="20211124 13:37:31.486"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:08.266" endtime="20211124 13:37:31.487"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '15', 'Head': '3', 'Body': '2', 'Legs': '6', 'Address': 'Address C'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.493" endtime="20211124 13:37:31.571"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.490" endtime="20211124 13:37:31.572"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.575" endtime="20211124 13:37:31.593"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.595" endtime="20211124 13:37:31.646"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:31.650" level="INFO">Types the text '6' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:31.648" endtime="20211124 13:37:31.683"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:31.687" level="INFO">Types the text 'Address C' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:31.684" endtime="20211124 13:37:31.719"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.573" endtime="20211124 13:37:31.720"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.723" endtime="20211124 13:37:31.806"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.721" endtime="20211124 13:37:31.809"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:31.817" endtime="20211124 13:37:31.897"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:31.918" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:31.887Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-DG3PLFVDXM&lt;/p&gt;&lt;p&gt;Address C&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:31.898" endtime="20211124 13:37:31.919"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.815" endtime="20211124 13:37:31.920"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.813" endtime="20211124 13:37:31.920"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.810" endtime="20211124 13:37:31.921"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:31.926" level="INFO">${Ordernummer} = 15</msg>
+<status status="PASS" starttime="20211124 13:37:31.924" endtime="20211124 13:37:31.926"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:31.942" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:31.887Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-DG3PLFVDXM&lt;/p&gt;&lt;p&gt;Address C&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:31.927" endtime="20211124 13:37:31.942"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:31.942" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\15.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:31.942" endtime="20211124 13:37:31.942"/>
+</kw>
+<msg timestamp="20211124 13:37:31.942" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:31.922" endtime="20211124 13:37:31.942"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:32.055" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/15.png"&gt;&lt;img src="browser/screenshot/15.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:32.055" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\15.png</msg>
+<status status="PASS" starttime="20211124 13:37:31.958" endtime="20211124 13:37:32.055"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:32.057" endtime="20211124 13:37:32.059"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:32.061" endtime="20211124 13:37:32.115"/>
+</kw>
+<msg timestamp="20211124 13:37:32.115" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:31.942" endtime="20211124 13:37:32.115"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.115" endtime="20211124 13:37:32.183"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.115" endtime="20211124 13:37:32.185"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:31.489" endtime="20211124 13:37:32.187"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '16', 'Head': '6', 'Body': '3', 'Legs': '6', 'Address': 'Address D'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.195" endtime="20211124 13:37:32.238"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.191" endtime="20211124 13:37:32.240"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.247" endtime="20211124 13:37:32.263"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.264" endtime="20211124 13:37:32.299"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:32.302" level="INFO">Types the text '6' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:32.301" endtime="20211124 13:37:32.320"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:32.324" level="INFO">Types the text 'Address D' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:32.322" endtime="20211124 13:37:32.355"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.241" endtime="20211124 13:37:32.356"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.360" endtime="20211124 13:37:32.430"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.357" endtime="20211124 13:37:32.432"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.440" endtime="20211124 13:37:32.498"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:32.515" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:32.493Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-2A6DRJZW8IM&lt;/p&gt;&lt;p&gt;Address D&lt;/p&gt;&lt;div id="part...</msg>
+<status status="PASS" starttime="20211124 13:37:32.499" endtime="20211124 13:37:32.515"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.438" endtime="20211124 13:37:32.516"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.436" endtime="20211124 13:37:32.517"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.433" endtime="20211124 13:37:32.518"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:32.522" level="INFO">${Ordernummer} = 16</msg>
+<status status="PASS" starttime="20211124 13:37:32.521" endtime="20211124 13:37:32.522"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:32.537" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:32.493Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-2A6DRJZW8IM&lt;/p&gt;&lt;p&gt;Address D&lt;/p&gt;&lt;div id="part...</msg>
+<status status="PASS" starttime="20211124 13:37:32.523" endtime="20211124 13:37:32.537"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:32.541" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\16.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:32.538" endtime="20211124 13:37:32.548"/>
+</kw>
+<msg timestamp="20211124 13:37:32.549" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:32.519" endtime="20211124 13:37:32.549"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:32.674" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/16.png"&gt;&lt;img src="browser/screenshot/16.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:32.675" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\16.png</msg>
+<status status="PASS" starttime="20211124 13:37:32.552" endtime="20211124 13:37:32.675"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:32.678" endtime="20211124 13:37:32.681"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:32.682" endtime="20211124 13:37:32.733"/>
+</kw>
+<msg timestamp="20211124 13:37:32.734" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:32.550" endtime="20211124 13:37:32.735"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.737" endtime="20211124 13:37:32.802"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.736" endtime="20211124 13:37:32.805"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.189" endtime="20211124 13:37:32.806"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '17', 'Head': '5', 'Body': '4', 'Legs': '1', 'Address': 'Address E'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.813" endtime="20211124 13:37:32.871"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.810" endtime="20211124 13:37:32.872"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.877" endtime="20211124 13:37:32.891"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.894" endtime="20211124 13:37:32.933"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:32.936" level="INFO">Types the text '1' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:32.934" endtime="20211124 13:37:32.953"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:32.956" level="INFO">Types the text 'Address E' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:32.954" endtime="20211124 13:37:32.988"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.874" endtime="20211124 13:37:32.989"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:32.993" endtime="20211124 13:37:33.039"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.990" endtime="20211124 13:37:33.040"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.048" endtime="20211124 13:37:33.085"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:33.102" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:33.081Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-YULB25VZYR&lt;/p&gt;&lt;p&gt;Address E&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:33.086" endtime="20211124 13:37:33.102"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.045" endtime="20211124 13:37:33.103"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.044" endtime="20211124 13:37:33.104"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.041" endtime="20211124 13:37:33.105"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:33.111" level="INFO">${Ordernummer} = 17</msg>
+<status status="PASS" starttime="20211124 13:37:33.109" endtime="20211124 13:37:33.111"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:33.129" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:33.081Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-YULB25VZYR&lt;/p&gt;&lt;p&gt;Address E&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:33.113" endtime="20211124 13:37:33.130"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:33.135" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\17.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:33.131" endtime="20211124 13:37:33.141"/>
+</kw>
+<msg timestamp="20211124 13:37:33.141" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:33.106" endtime="20211124 13:37:33.141"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:33.250" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/17.png"&gt;&lt;img src="browser/screenshot/17.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:33.251" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\17.png</msg>
+<status status="PASS" starttime="20211124 13:37:33.141" endtime="20211124 13:37:33.251"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:33.253" endtime="20211124 13:37:33.255"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:33.256" endtime="20211124 13:37:33.306"/>
+</kw>
+<msg timestamp="20211124 13:37:33.306" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:33.141" endtime="20211124 13:37:33.306"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.306" endtime="20211124 13:37:33.365"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.306" endtime="20211124 13:37:33.367"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:32.808" endtime="20211124 13:37:33.368"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '18', 'Head': '2', 'Body': '5', 'Legs': '1', 'Address': 'Address F'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.375" endtime="20211124 13:37:33.420"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.372" endtime="20211124 13:37:33.421"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.426" endtime="20211124 13:37:33.441"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.444" endtime="20211124 13:37:33.484"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:33.487" level="INFO">Types the text '1' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:33.485" endtime="20211124 13:37:33.505"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:33.508" level="INFO">Types the text 'Address F' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:33.506" endtime="20211124 13:37:33.539"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.422" endtime="20211124 13:37:33.540"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.544" endtime="20211124 13:37:33.587"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.541" endtime="20211124 13:37:33.588"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.595" endtime="20211124 13:37:33.634"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:33.651" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:33.630Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-WDTIZVQFZQ&lt;/p&gt;&lt;p&gt;Address F&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:33.636" endtime="20211124 13:37:33.651"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.593" endtime="20211124 13:37:33.652"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.591" endtime="20211124 13:37:33.653"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.589" endtime="20211124 13:37:33.654"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:33.659" level="INFO">${Ordernummer} = 18</msg>
+<status status="PASS" starttime="20211124 13:37:33.657" endtime="20211124 13:37:33.659"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:33.673" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:33.630Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-WDTIZVQFZQ&lt;/p&gt;&lt;p&gt;Address F&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:33.660" endtime="20211124 13:37:33.673"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:33.677" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\18.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:33.674" endtime="20211124 13:37:33.683"/>
+</kw>
+<msg timestamp="20211124 13:37:33.685" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:33.655" endtime="20211124 13:37:33.685"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:33.790" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/18.png"&gt;&lt;img src="browser/screenshot/18.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:33.790" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\18.png</msg>
+<status status="PASS" starttime="20211124 13:37:33.688" endtime="20211124 13:37:33.791"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:33.792" endtime="20211124 13:37:33.795"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:33.797" endtime="20211124 13:37:33.839"/>
+</kw>
+<msg timestamp="20211124 13:37:33.839" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:33.686" endtime="20211124 13:37:33.839"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.839" endtime="20211124 13:37:33.915"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.839" endtime="20211124 13:37:33.916"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.370" endtime="20211124 13:37:33.917"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '19', 'Head': '4', 'Body': '6', 'Legs': '2', 'Address': 'Address G'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.922" endtime="20211124 13:37:33.987"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.920" endtime="20211124 13:37:33.988"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:33.992" endtime="20211124 13:37:34.004"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.005" endtime="20211124 13:37:34.050"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:34.053" level="INFO">Types the text '2' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:34.051" endtime="20211124 13:37:34.071"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:34.074" level="INFO">Types the text 'Address G' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:34.072" endtime="20211124 13:37:34.103"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.989" endtime="20211124 13:37:34.105"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.109" endtime="20211124 13:37:34.154"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.106" endtime="20211124 13:37:34.155"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.162" endtime="20211124 13:37:34.202"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:34.226" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:34.198Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-OQQQ44HUT9&lt;/p&gt;&lt;p&gt;Address G&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:34.203" endtime="20211124 13:37:34.226"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.159" endtime="20211124 13:37:34.228"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.158" endtime="20211124 13:37:34.230"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.156" endtime="20211124 13:37:34.231"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:34.236" level="INFO">${Ordernummer} = 19</msg>
+<status status="PASS" starttime="20211124 13:37:34.234" endtime="20211124 13:37:34.236"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:34.250" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:34.198Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-OQQQ44HUT9&lt;/p&gt;&lt;p&gt;Address G&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:34.237" endtime="20211124 13:37:34.251"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:34.254" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\19.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:34.252" endtime="20211124 13:37:34.261"/>
+</kw>
+<msg timestamp="20211124 13:37:34.262" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:34.232" endtime="20211124 13:37:34.262"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:34.365" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/19.png"&gt;&lt;img src="browser/screenshot/19.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:34.366" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\19.png</msg>
+<status status="PASS" starttime="20211124 13:37:34.266" endtime="20211124 13:37:34.366"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:34.367" endtime="20211124 13:37:34.370"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:34.371" endtime="20211124 13:37:34.407"/>
+</kw>
+<msg timestamp="20211124 13:37:34.407" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:34.263" endtime="20211124 13:37:34.407"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.422" endtime="20211124 13:37:34.479"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.407" endtime="20211124 13:37:34.480"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:33.918" endtime="20211124 13:37:34.481"/>
+</iter>
+<iter>
+<var name="${row}">{'Order number': '20', 'Head': '1', 'Body': '1', 'Legs': '5', 'Address': 'Address H'}</var>
+<kw name="Close the annoying modal">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>"OK"</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.486" endtime="20211124 13:37:34.544"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.483" endtime="20211124 13:37:34.545"/>
+</kw>
+<kw name="Fill the form">
+<arg>${row}</arg>
+<kw name="Select Options By" library="RPA.Browser.Playwright">
+<arg>css=#head</arg>
+<arg>value</arg>
+<arg>${row}[Head]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Selects options from select element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.548" endtime="20211124 13:37:34.565"/>
+</kw>
+<kw name="Check Checkbox" library="RPA.Browser.Playwright">
+<arg>id=id-body-${row}[Body]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Checks the checkbox or selects radio button found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.566" endtime="20211124 13:37:34.599"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>//*[@class="form-control"]</arg>
+<arg>${row}[Legs]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:34.602" level="INFO">Types the text '5' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:34.600" endtime="20211124 13:37:34.617"/>
+</kw>
+<kw name="Type Text" library="RPA.Browser.Playwright">
+<arg>id=address</arg>
+<arg>${row}[Address]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:34.620" level="INFO">Types the text 'Address H' in the given field.</msg>
+<status status="PASS" starttime="20211124 13:37:34.618" endtime="20211124 13:37:34.649"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.546" endtime="20211124 13:37:34.650"/>
+</kw>
+<kw name="Preview the robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>id=preview</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.653" endtime="20211124 13:37:34.715"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.651" endtime="20211124 13:37:34.716"/>
+</kw>
+<kw name="Submit the order">
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>10x</arg>
+<arg>1 s</arg>
+<arg>try to submit the order</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:34.722" endtime="20211124 13:37:34.768"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:44.990" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-22.png"&gt;&lt;img src="browser/screenshot/fail-screenshot-22.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:44.990" level="FAIL">TimeoutError: page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================</msg>
+<status status="FAIL" starttime="20211124 13:37:34.770" endtime="20211124 13:37:44.990"/>
+</kw>
+<status status="FAIL" starttime="20211124 13:37:34.720" endtime="20211124 13:37:44.990"/>
+</kw>
+<kw name="Try to submit the order">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:46.007" endtime="20211124 13:37:46.061"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:46.077" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:46.043Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-DMYGYSQUBD&lt;/p&gt;&lt;p&gt;Address H&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:46.063" endtime="20211124 13:37:46.077"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:46.007" endtime="20211124 13:37:46.079"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.718" endtime="20211124 13:37:46.079"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.717" endtime="20211124 13:37:46.080"/>
+</kw>
+<kw name="Store the receipt as a PDF file">
+<var>${pdf}</var>
+<arg>${row}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Ordernummer}</var>
+<arg>${row}[Order number]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20211124 13:37:46.085" level="INFO">${Ordernummer} = 20</msg>
+<status status="PASS" starttime="20211124 13:37:46.084" endtime="20211124 13:37:46.085"/>
+</kw>
+<kw name="Get Property" library="RPA.Browser.Playwright">
+<var>${order_results_html}</var>
+<arg>//*[@id="receipt"]</arg>
+<arg>outerHTML</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the ``property`` of the element found by ``selector``.</doc>
+<msg timestamp="20211124 13:37:46.100" level="INFO">${order_results_html} = &lt;div id="receipt" class="alert alert-success" role="alert"&gt;&lt;h3&gt;Receipt&lt;/h3&gt;&lt;div&gt;2021-11-24T12:37:46.043Z&lt;/div&gt;&lt;p class="badge badge-success"&gt;RSB-ROBO-ORDER-DMYGYSQUBD&lt;/p&gt;&lt;p&gt;Address H&lt;/p&gt;&lt;div id="parts...</msg>
+<status status="PASS" starttime="20211124 13:37:46.087" endtime="20211124 13:37:46.100"/>
+</kw>
+<kw name="Html To Pdf" library="RPA.PDF">
+<arg>${order_results_html}</arg>
+<arg>${Directory}${/}${Ordernummer}.pdf</arg>
+<doc>Generate a PDF file from HTML content.</doc>
+<msg timestamp="20211124 13:37:46.102" level="INFO">Writing output to file C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\Receipts\20.pdf</msg>
+<status status="PASS" starttime="20211124 13:37:46.101" endtime="20211124 13:37:46.102"/>
+</kw>
+<msg timestamp="20211124 13:37:46.102" level="INFO">${pdf} = None</msg>
+<status status="PASS" starttime="20211124 13:37:46.081" endtime="20211124 13:37:46.102"/>
+</kw>
+<kw name="Take a screenshot of the robot">
+<var>${screenshot}</var>
+<arg>${row}</arg>
+<kw name="Take Screenshot" library="RPA.Browser.Playwright">
+<var>${screenshot}</var>
+<arg>${row}[Order number]</arg>
+<arg>//*[@id="robot-preview"]</arg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<msg timestamp="20211124 13:37:46.218" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/20.png"&gt;&lt;img src="browser/screenshot/20.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20211124 13:37:46.219" level="INFO">${screenshot} = C:\Users\ThomasMellema\OneDrive - Bureau Sprongkracht Munker\Documenten\Python\RpaChallenge2\browser\screenshot\20.png</msg>
+<status status="PASS" starttime="20211124 13:37:46.102" endtime="20211124 13:37:46.220"/>
+</kw>
+<kw name="Open Pdf" library="RPA.PDF">
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Open a PDF document for reading.</doc>
+<status status="PASS" starttime="20211124 13:37:46.221" endtime="20211124 13:37:46.223"/>
+</kw>
+<kw name="Add Watermark Image To Pdf" library="RPA.PDF">
+<arg>${screenshot}</arg>
+<arg>${Directory}${/}${row}[Order number].pdf</arg>
+<doc>Add image to PDF which can be new or existing PDF.</doc>
+<status status="PASS" starttime="20211124 13:37:46.224" endtime="20211124 13:37:46.273"/>
+</kw>
+<msg timestamp="20211124 13:37:46.274" level="INFO">${screenshot} = None</msg>
+<status status="PASS" starttime="20211124 13:37:46.102" endtime="20211124 13:37:46.275"/>
+</kw>
+<kw name="Go to order another robot">
+<kw name="Click" library="RPA.Browser.Playwright">
+<arg>//*[@id="order-another"]</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" starttime="20211124 13:37:46.277" endtime="20211124 13:37:46.344"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:46.275" endtime="20211124 13:37:46.345"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:34.482" endtime="20211124 13:37:46.346"/>
+</iter>
+<status status="PASS" starttime="20211124 13:34:32.487" endtime="20211124 13:37:46.347"/>
+</for>
+<kw name="Create a ZIP file of the receipts">
+<kw name="Archive Folder With Zip" library="RPA.Archive">
+<arg>${Directory}</arg>
+<arg>ZIPReceipts.zip</arg>
+<doc>Create a zip archive of a folder</doc>
+<status status="PASS" starttime="20211124 13:37:46.353" endtime="20211124 13:37:46.378"/>
+</kw>
+<status status="PASS" starttime="20211124 13:37:46.350" endtime="20211124 13:37:46.379"/>
+</kw>
+<status status="PASS" starttime="20211124 13:34:00.461" endtime="20211124 13:37:46.381"/>
+</test>
+<doc>RPA Challenge 2</doc>
+<status status="PASS" starttime="20211124 13:33:56.087" endtime="20211124 13:37:46.494"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tasks</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Tasks">Tasks</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

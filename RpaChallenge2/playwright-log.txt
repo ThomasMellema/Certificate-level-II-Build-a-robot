@@ -1,0 +1,245 @@
+{"level":30,"time":"2021-11-24T12:34:00.262Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Listening on 13913"}
+{"level":30,"time":"2021-11-24T12:34:01.266Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2021-11-24T12:34:01.266Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Trace file: "}
+{"level":30,"time":"2021-11-24T12:34:01.281Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changed active context"}
+{"level":30,"time":"2021-11-24T12:34:01.293Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"currentBrowser: [object Object]"}
+{"level":30,"time":"2021-11-24T12:34:01.711Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Video path: undefined"}
+{"level":30,"time":"2021-11-24T12:34:01.711Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changed active page"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:34:44.255Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:34:44.223Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-POKB7OSSOK</p><p>Address 123</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 2</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:34:44.291Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:34:44.223Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-POKB7OSSOK</p><p>Address 123</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 2</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:34:45.129Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:34:45.109Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-F6E0U3WZ5K</p><p>Address 456</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 4</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:34:45.154Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:34:45.109Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-F6E0U3WZ5K</p><p>Address 456</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 4</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:34:57.032Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:34:57.013Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-1ZYHH2HFNL</p><p>Address 789</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 6</div><div>Body: 2</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:34:57.060Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:34:57.013Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-1ZYHH2HFNL</p><p>Address 789</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 6</div><div>Body: 2</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:35:20.323Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:20.300Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-P5YLM5GB9Q</p><p>Address 1</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 2</div><div>Body: 3</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:20.350Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:20.300Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-P5YLM5GB9Q</p><p>Address 1</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 2</div><div>Body: 3</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:35:32.305Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:32.264Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-JQ1OHT3R2</p><p>Address 2</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 5</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:32.330Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:32.264Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-JQ1OHT3R2</p><p>Address 2</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 5</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:33.036Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:33.013Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-SCCLDO361C</p><p>Address 3</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 6</div><div>Legs: 6</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:33.064Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:33.013Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-SCCLDO361C</p><p>Address 3</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 6</div><div>Legs: 6</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:33.735Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:33.695Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-N6GXTK2FTN</p><p>Address 4</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 5</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:33.770Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:33.695Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-N6GXTK2FTN</p><p>Address 4</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 5</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:34.400Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:34.376Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-K25W5BRKL</p><p>Address 5</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 2</div><div>Body: 3</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:35:34.428Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:35:34.376Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-K25W5BRKL</p><p>Address 5</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 2</div><div>Body: 3</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:36:08.932Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:08.907Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-1WW0MAP0H</p><p>Address 6</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 2</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:36:08.956Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:08.907Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-1WW0MAP0H</p><p>Address 6</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 2</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:36:43.498Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:43.474Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-2FHLH7VI5O</p><p>Address 7</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 4</div><div>Body: 4</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:36:43.524Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:43.474Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-2FHLH7VI5O</p><p>Address 7</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 4</div><div>Body: 4</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:36:44.197Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:44.177Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-CXIC6MCXM2</p><p>Address 8</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 6</div><div>Body: 6</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:36:44.222Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:44.177Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-CXIC6MCXM2</p><p>Address 8</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 6</div><div>Body: 6</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:36:56.101Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:56.069Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-VPK4B1BDB</p><p>Address 9</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 3</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:36:56.124Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:36:56.069Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-VPK4B1BDB</p><p>Address 9</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 3</div><div>Legs: 3</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:37:08.014Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:07.982Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-2SLTR6SBIC</p><p>Address A</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 5</div><div>Legs: 4</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:08.038Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:07.982Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-2SLTR6SBIC</p><p>Address A</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 5</div><div>Legs: 4</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:37:31.210Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:31.177Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-4Q6W26W0II</p><p>Address B</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:31.236Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:31.177Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-4Q6W26W0II</p><p>Address B</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:31.916Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:31.887Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-DG3PLFVDXM</p><p>Address C</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 2</div><div>Legs: 6</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:31.940Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:31.887Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-DG3PLFVDXM</p><p>Address C</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 3</div><div>Body: 2</div><div>Legs: 6</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:32.512Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:32.493Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-2A6DRJZW8IM</p><p>Address D</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 6</div><div>Body: 3</div><div>Legs: 6</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:32.535Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:32.493Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-2A6DRJZW8IM</p><p>Address D</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 6</div><div>Body: 3</div><div>Legs: 6</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:33.100Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:33.081Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-YULB25VZYR</p><p>Address E</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 5</div><div>Body: 4</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:33.127Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:33.081Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-YULB25VZYR</p><p>Address E</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 5</div><div>Body: 4</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:33.649Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:33.630Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-WDTIZVQFZQ</p><p>Address F</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 2</div><div>Body: 5</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:33.671Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:33.630Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-WDTIZVQFZQ</p><p>Address F</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 2</div><div>Body: 5</div><div>Legs: 1</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:34.223Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:34.198Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-OQQQ44HUT9</p><p>Address G</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 4</div><div>Body: 6</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:34.248Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:34.198Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-OQQQ44HUT9</p><p>Address G</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 4</div><div>Body: 6</div><div>Legs: 2</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+================= Original suppressed error =================
+page.waitForSelector: Timeout 10000ms exceeded.
+=========================== logs ===========================
+waiting for selector "//*[@id="receipt"]"
+============================================================
+    at C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25997:50
+    at step (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25966:23)
+    at Object.next (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25947:53)
+    at fulfilled (C:\Users\ThomasMellema\AppData\Local\robocorp\holotree\b1f3c244e_09529949\lib\site-packages\Browser\wrapper\index.js:25938:58) {
+  name: 'TimeoutError'
+}
+=============================================================
+{"level":30,"time":"2021-11-24T12:37:46.075Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:46.043Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-DMYGYSQUBD</p><p>Address H</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:46.098Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Retrieved dom property for element //*[@id=\"receipt\"] containing <div id=\"receipt\" class=\"alert alert-success\" role=\"alert\"><h3>Receipt</h3><div>2021-11-24T12:37:46.043Z</div><p class=\"badge badge-success\">RSB-ROBO-ORDER-DMYGYSQUBD</p><p>Address H</p><div id=\"parts\" class=\"alert alert-light\" role=\"alert\"><div>Head: 1</div><div>Body: 1</div><div>Legs: 5</div></div><p>Thank you for your order! We will ship your robot to you as soon as our warehouse robots gather the parts you ordered! You will receive your robot in no time!</p></div>"}
+{"level":30,"time":"2021-11-24T12:37:46.395Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changed active context"}
+{"level":30,"time":"2021-11-24T12:37:46.395Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changing current active page"}
+{"level":30,"time":"2021-11-24T12:37:46.395Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changed active page"}
+{"level":30,"time":"2021-11-24T12:37:46.426Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changed active context"}
+{"level":30,"time":"2021-11-24T12:37:46.426Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changing current active page"}
+{"level":30,"time":"2021-11-24T12:37:46.426Z","pid":2424,"hostname":"DESKTOP-977TCQK","msg":"Changed active page"}
